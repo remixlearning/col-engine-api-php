@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Partner Organization TEST site</title>
+  <meta name="description" content="Partner Organization TEST site">
+  <meta name="author" content="SitePoint">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h1>Partner Organization User Integration tester </h1>
+  <h2>Step 1: Select an Organization</h2>
+ 
+  <select id="token">
+    <option></option>
+    <option value="c840607155c138672e74bd6e0810d85ca2037b226b13a5eca94d786ae7f33f33">Access Living</option>
+    <option value="ca4aba8c531667ce44689b07c1c344e780de0cdfa10ad755ba9b25213f03c65f">Adler Planetarium</option>
+    <option value="255eb5323ec4a7321a23c79fafb078f419e15756c75e22a1fda0467376f03ed8">After School Matters</option>
+    <option value="7d7b5c12652829d09622028a7d69cc7a9d9ef3e41bae5e4ea97895c5ea279229">Agape Werks, Inc | LevelUP Makerspace</option>
+    <option value="f4ccbb38fa2ee84b2dc2982402f13837fa761bba6b440e8d2a44b3b5fcb80d16">Artifice NFP | Artifice</option>
+    <option value="07638559577981bbdafc42b7544a35a8b8914a987e43a24b374fbaf7edc6c9e4">ArtReach at Lillstreet</option>
+    <option value="c126224c657b5abf21e4f180319cc2a7dfa72d78b967d17604c85aec631e2d03">Best Buy</option>
+
+  </select>
+
+  <h2>Step 2: Enter a user id (this would be the user id in the Partner Organizations website)</h2>
+  <input id="ouid" type="text"  value=""/>
+
+  <h2>Step 3: Click the button below to start the Access grant process </h2>
+  <button id="open_auth_process">Start Access Grant process</button>
+
+  <script type="text/javascript">
+  $(document).on("click", "#open_auth_process", function(e){
+    var url = "http://test.explorechi.org/auth?token=" + $('#token').val() + "&ouid=" + $('#ouid').val();
+    window.open(url,'_blank');
+  });
+  </script>
+</body>
+</html>
