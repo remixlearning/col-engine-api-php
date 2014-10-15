@@ -49,10 +49,24 @@ print_r("<br/><br/>");
 print_r($json);
 
 // Full api call to get list of badges
-print_r("<br/><br/>authorized:<br/>");
 $resp = COL_API::get_authorized($jwt);
-// todo add example json parsing decoded response
 print_r($resp);
+
+// todo add example json parsing decoded response
+$badge_list = json_decode($resp);
+echo "Response status: " .  $badge_list->status;
+$badges = $badge_list->result;
+echo count($badges);
+	foreach($badges as $badge) {
+		echo "<br/>badge name: " . $badge->name;
+		echo "<br/>description: " . $badge->description;
+		echo "<br/>informal_description: " . $badge->informal_description;
+		echo "<br/>blurb: ". $badge->blurb;
+		echo "<br/>badge type: " . $badge->badge_type;
+		echo "<br/>image url: " . $badge->image_url;
+		echo "<br/>issue count: " . $badge->issue_count;
+	}
+
 
 // todo encode request to issue badge
 
