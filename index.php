@@ -41,24 +41,24 @@ class COL_API {
 
 // JWT encode the get badges request
 $jwt = COL_API::encode("badges");
-print_r($jwt);
+echo "Encoded jwt request<br/>" . $jwt;
 
 // Decodes JWT encoded request
 $json = COL_API::decode($jwt);
-print_r("<br/><br/>");
+$json = json_decode(json_encode($json), true);
+echo "<br/><br/>Decoded jwt request<br/>";
 print_r($json);
 
 // Full api call to get list of badges
 $resp = COL_API::get_authorized($jwt);
-print_r($resp);
 
 // todo add example json parsing decoded response
 $badge_list = json_decode($resp);
-echo "Response status: " .  $badge_list->status;
+echo "<br/>Response status: " .  $badge_list->status;
 $badges = $badge_list->result;
-echo count($badges);
+echo "Badges in COL: " . count($badges);
 	foreach($badges as $badge) {
-		echo "<br/>badge name: " . $badge->name;
+		echo "<br/><br/>badge name: " . $badge->name;
 		echo "<br/>description: " . $badge->description;
 		echo "<br/>informal_description: " . $badge->informal_description;
 		echo "<br/>blurb: ". $badge->blurb;
@@ -66,6 +66,10 @@ echo count($badges);
 		echo "<br/>image url: " . $badge->image_url;
 		echo "<br/>issue count: " . $badge->issue_count;
 	}
+
+// whole response
+echo "<br/><br/>";
+print_r($resp);
 
 
 // todo encode request to issue badge
