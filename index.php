@@ -6,8 +6,8 @@ class COL_API {
 	// Example uses test org *Staging*
 	
 	// this is your organization's secret
-	const KEY = "c126224c657b5abf21e4f180319cc2a7dfa72d78b967d17604c85aec631e2d03";
-	
+	const KEY = "9ea75e0be02e26ef4d3dfd8030e2b75f3da6674165b13bde4b676aed54a8b490";
+	const SECRET = "eda8db792f04b014f54634f8cc9d5b7cc5fd204fae31d4b08e786c7a180b67ad84ef3e149514dec04a28528c6d531b0bb1df53f077d042ac263caded5ebe00c3";
 	// this is the COL ENDPOINT
 	const STAGING_ENDPOINT = "http://chicago.col-engine-staging.com/partner_organizations/api.json";
 	
@@ -19,13 +19,13 @@ class COL_API {
 				sub => $action,
 				payload => array()
 		);
-		$jwt = JWT::encode( $token, self::KEY );
+		$jwt = JWT::encode( $token, self::SECRET );
 		return $jwt;
 	}	
 	
 	// Decode jwt string
 	public static function decode($jwt) {
-		$jsonData = JWT::decode($jwt, self::KEY);
+		$jsonData = JWT::decode($jwt, self::SECRET);
 		return $jsonData;
 	}
 	
