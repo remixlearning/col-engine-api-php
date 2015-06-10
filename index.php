@@ -17,7 +17,7 @@ class COL_API {
 		$token = array("exp" => time() + 30,
 				version => "v1",
 				sub => $action,
-				payload => array()
+				payload => array("key"=>"9ea75e0be02e26ef4d3dfd8030e2b75f3da6674165b13bde4b676aed54a8b490")
 		);
 		$jwt = JWT::encode( $token, self::SECRET );
 		return $jwt;
